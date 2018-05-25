@@ -5,8 +5,8 @@ bool isunique(string s)
 {
     int hash[256] = {0};
     for(auto i: s){
-        if(hash[i]!=0) return false;
-        else hash[i]++;
+        if(hash[(int)i]!=0) return false;
+        else hash[(int)i]++;
     }
     return true;
 }

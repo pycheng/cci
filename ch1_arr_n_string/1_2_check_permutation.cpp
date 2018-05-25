@@ -3,8 +3,8 @@ using namespace std;
 
 bool ispermut(string a, string b){
     int hash[256]={0};
-    for(auto i: a) hash[i]++;
-    for(auto i: b) hash[i]--;
+    for(auto i: a) hash[(int)i]++;
+    for(auto i: b) hash[(int)i]--;
     for(auto i:hash){
         if(i>0) return false;
     }

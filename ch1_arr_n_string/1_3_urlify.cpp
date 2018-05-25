@@ -4,7 +4,7 @@
 #include <string>
 using namespace std;
 
-string urlify(string _str, int len){
+string urlify_stack(string _str, int len){
     string res="";
     stack<string> stk;
     int first_char = 0;
@@ -22,6 +22,26 @@ string urlify(string _str, int len){
         stk.pop();
     }
     return res;
+}
+
+string urlify(string _str, int len)
+{
+    int space_cnt = 0;
+    int res_idx = 0;
+
+    for(int i = 0; i<len; i++) if(_str[i] == ' ') space_cnt++;
+    res_idx = len+space_cnt*2;
+
+    for(int i = len-1; i>=0; i--){
+        if(_str[i] == ' '){
+            _str[--res_idx] = '0';
+            _str[--res_idx] = '2';
+            _str[--res_idx] = '%';
+        }else{
+            _str[--res_idx] = _str[i];
+        }
+    }
+    return _str;
 }
 
 int main(){
